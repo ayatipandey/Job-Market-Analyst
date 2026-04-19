@@ -81,9 +81,10 @@ def get_missing_report(df):
 
 from loadData import load_csv
 
-filepath = "sampledata/postings.csv"
-raw = load_csv(filepath)
-clean = clean_data(raw)
+if __name__ == "__main__": 
+    filepath = "postings.csv"
+    raw = load_csv(filepath)
+    clean = clean_data(raw)
 
-print("\nMissing value report:")
-print(get_missing_report(clean))
+    print("\nMissing value report:")
+    print(get_missing_report(clean))

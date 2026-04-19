@@ -47,12 +47,13 @@ def getSummary(df):
     return {"total_rows": total_rows,"total_columns":total_columns }
 
 
-filepath = "sampledata/postings.csv"
-df = load_csv(filepath)
+if __name__ =="__main__":
+    filepath="postings.csv"
+    df=load_csv(filepath)
 
-if df is not None:
-    summary = getSummary(df)
-    print("File loaded successfully.")
-    print("Rows:", summary["total_rows"])
-    print("Columns:",summary["total_columns"])
-    print("Column names:", list(df.columns))
+    if df is not None:
+        summary = getSummary(df)
+        print("File loaded successfully.")
+        print("Rows:",summary["total_rows"])
+        print("Columns:",summary["total_columns"])
+        print("Column names:",list(df.columns))
