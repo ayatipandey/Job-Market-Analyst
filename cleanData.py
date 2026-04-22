@@ -47,8 +47,8 @@ def parse_location(df):
 
     for location in df["location"]:
         if pd.isna(location) or str(location).strip() == "":
-            cities.append("unknown")
-            states.append("unknown")
+            cities.append("Unknown")
+            states.append("Unknown")
             continue
         parts = str(location).split(",")
 
@@ -63,28 +63,3 @@ def parse_location(df):
     df["state"] = states
     
     return df
-
-def get_missing_report(df):
-    missing_counts = df.isnull().sum()
-    missing_percentage = (missing_counts/ len(df) * 100)
-
-    report = pd.DataFrame({
-        "Column": missing_counts.index,
-        "Missing Count": missing_counts.values,
-        "Missing Percentage (%)": missing_percentage.values,
-    })
-
-
-    report = report[report["Missing Count"] > 0]
-    report = report.sort_values("Missing Count", ascending=False)
-    return report
-
-from loadData import load_csv
-
-if __name__ == "__main__": 
-    filepath = "postings.csv"
-    raw = load_csv(filepath)
-    clean = clean_data(raw)
-
-    print("\nMissing value report:")
-    print(get_missing_report(clean))

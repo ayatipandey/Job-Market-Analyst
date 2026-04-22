@@ -17,17 +17,14 @@ def load_csv(filepath):
 
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"File not found: {filepath}")
-        return None
-
+    
     if not filepath.endswith(".csv"):
         raise ValueError("Only .csv files are supported.")
-        return None
 
     df = pd.read_csv(filepath)
 
     if df.empty:
         raise ValueError("No data found.")
-        return None
     
     missing_columns = []
     for column in REQUIRED_COLUMNS:
@@ -36,24 +33,5 @@ def load_csv(filepath):
 
     if missing_columns:
         raise ValueError(f"The CSV is missing required columns: {', '.join(missing_columns)}.")
-        return None
     
     return df
-
-
-def getSummary(df):
-    total_rows = len(df)
-    total_columns = len(df.columns)
-    return {"total_rows": total_rows,"total_columns":total_columns }
-
-
-if __name__ =="__main__":
-    filepath="postings.csv"
-    df=load_csv(filepath)
-
-    if df is not None:
-        summary = getSummary(df)
-        print("File loaded successfully.")
-        print("Rows:",summary["total_rows"])
-        print("Columns:",summary["total_columns"])
-        print("Column names:",list(df.columns))

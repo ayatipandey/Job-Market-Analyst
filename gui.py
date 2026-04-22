@@ -46,7 +46,7 @@ class JobMarketAnalyzerApp:
                 self.statusLabel.config(text = f"Loaded: {filePath.split('/')[-1]}")
                 self.statsButton.config(state = "normal")
                 self.distibutionButton.config(state = "normal")
-                messagebox.showinfo("File processed succesfully.")
+                messagebox.showinfo("Success", "File processed succesfully.")
             except Exception as e:
                 messagebox.showerror("Error:", str(e))
 
