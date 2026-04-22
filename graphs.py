@@ -23,7 +23,7 @@ def salaryDistributionHistogram(df, salary_column='normalized_salary'):
     ax.legend()
 
     plt.tight_layout()
-    plt.show()
+    return fig
 
 #table of salary summary stats
 def summaryStatsTable(df, salary_column='normalized_salary'):
@@ -46,20 +46,8 @@ def summaryStatsTable(df, salary_column='normalized_salary'):
     table.scale(1.3, 1.8) 
     ax.set_title('Salary Summary Statistics', fontsize=13, pad=12)
 
-    plt.show()
+    return fig
 
 #import data and clean data before creating graphs
 from loadData import load_csv
 from cleanData import clean_data
-
-#test- run graphs.py to see the graphs and summary stats table with the cleaned data from postings.csv
-#can remove below code and call graph functions in main.py once done
-
-#load and clean data
-filepath = "postings.csv"
-df = load_csv(filepath)
-df = clean_data(df)
-
-#call methods to create graphs
-salaryDistributionHistogram(df)
-summaryStatsTable(df)
