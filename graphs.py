@@ -7,8 +7,6 @@ def salaryDistributionHistogram(df, salary_column='normalized_salary'):
     from analyzeData import computeSummaryStatistics #import computeSummaryStatistics from analyzeData.py
     
     summaryStats = computeSummaryStatistics(df, salary_column)
-    #print summary stats in console
-    print(f"Mean: {summaryStats['mean']}, Median: {summaryStats['median']}, Std: {summaryStats['std']}, Min: {summaryStats['min']}, Max: {summaryStats['max']}")
     
     salaryData = df[salary_column].dropna() #remove missing values
     salaryData = salaryData[salaryData <=500000] #filter extreme values
@@ -23,6 +21,10 @@ def salaryDistributionHistogram(df, salary_column='normalized_salary'):
     ax.legend()
 
     plt.tight_layout()
+
+    #print summary stats in console
+    print(f"Mean: {summaryStats['mean']}, Median: {summaryStats['median']}, Std: {summaryStats['std']}, Min: {summaryStats['min']}, Max: {summaryStats['max']}")
+
     return fig
 
 #table of salary summary stats
@@ -48,6 +50,49 @@ def summaryStatsTable(df, salary_column='normalized_salary'):
 
     return fig
 
+#bar chart of skill frequency using seaborn
+def skillFrequencyBarChart(df, skill_column="description", top_n=10):
+    
+    #retrieve the top n skills and their counts
+    skillFreq = skillFrequency(df, skill_column).head(top_n)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.barplot(data=skillFreq,x="Count", y="Skill", ax=ax, palette="rocket_r")
+    ax.set_title("Top Skills in Job Descriptions")
+    ax.set_xlabel("Frequency")
+    ax.set_ylabel("Skill")
+    
+    plt.tight_layout()
+    return fig
+
+#bar chart of jobs by work type using seaborn
+def jobByWorkTypeBarChart(df, workTypeCol='formatted_work_type'):
+    
+    #retrieve counts of each work type (contract, full-time, part-time)
+    workTypeCounts = jobsByWorkType(df, workTypeCol)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.barplot(data=workTypeCounts,x="Work Type", y="Count", ax=ax, palette="husl")
+    ax.set_title("Jobs by Work Type")
+    ax.set_xlabel("Work Type")
+    ax.set_ylabel("Number of Job Postings")
+    
+    plt.tight_layout()
+    return fig
+
 #import data and clean data before creating graphs
 from loadData import load_csv
 from cleanData import clean_data
+from analyzeData import skillFrequency, jobsByWorkType
+
+#can be removed once done testing 
+# if __name__ == "__main__":
+#     filepath = "postings.csv"
+#     raw = load_csv(filepath)
+#     df = clean_data(raw)
+
+#     fig1 = skillFrequencyBarChart(df)
+#     plt.show()
+
+#     fig2 = jobByWorkTypeBarChart(df)
+#     plt.show()

@@ -43,8 +43,8 @@ Calculates and displays:
 - Minimum salary
 - Maximum salary
 
-### Jobs by Location & Industry
-Displays job counts grouped by location and industry.
+### Jobs by Location & Work Type
+Displays job counts grouped by location and work type.
 
 ### Summary Statistics
 Shows key figures in a structured table inside the GUI.
