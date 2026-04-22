@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from cleanData import clean_data
 from loadData import load_csv
-from graphs import salaryDistributionHistogram, summaryStatsTable
+from graphs import salaryDistributionHistogram, summaryStatsTable, skillFrequencyBarChart, jobByWorkTypeBarChart
+import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class JobMarketAnalyzerApp:
@@ -32,6 +33,12 @@ class JobMarketAnalyzerApp:
         self.distibutionButton = tk.Button(self.buttonFrame, text="View Salary Distribution", state="disabled", command=self.showDistribution,  **buttonsStyle)
         self.distibutionButton.grid(row = 0, column = 1, padx = 10)
 
+        self.workTypeButton = tk.Button(self.buttonFrame, text="Jobs by Work Type", state="disabled", command=self.showWorkType,  **buttonsStyle)
+        self.workTypeButton.grid(row = 1, column = 0, padx = 10)
+
+        self.skillsButton = tk.Button(self.buttonFrame, text="Skills Frequency", state="disabled", command=self.showSkills,  **buttonsStyle)
+        self.skillsButton.grid(row = 1, column = 1, padx = 10)
+
         self.chartFrame = tk.Frame(root, bg = "white")
         self.chartFrame.pack(fill = "both", expand = True, pady = 20, padx = 20 )
 
@@ -46,6 +53,8 @@ class JobMarketAnalyzerApp:
                 self.statusLabel.config(text = f"Loaded: {filePath.split('/')[-1]}")
                 self.statsButton.config(state = "normal")
                 self.distibutionButton.config(state = "normal")
+                self.workTypeButton.config(state = "normal") 
+                self.skillsButton.config(state = "normal")
                 messagebox.showinfo("Success", "File processed succesfully.")
             except Exception as e:
                 messagebox.showerror("Error:", str(e))
@@ -66,3 +75,16 @@ class JobMarketAnalyzerApp:
         if self.df is not None:
             fig = salaryDistributionHistogram(self.df)
             self.embedFigures(fig)
+
+    def showWorkType(self):
+        if self.df is not None:
+            fig = jobByWorkTypeBarChart(self.df)
+            self.embedFigures(fig)
+
+    def showSkills(self):
+        if self.df is not None:
+            plt.close('all')
+            fig = skillFrequencyBarChart(self.df)
+            self.embedFigures(fig)
+
+    
