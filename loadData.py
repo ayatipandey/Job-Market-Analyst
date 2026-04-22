@@ -1,8 +1,10 @@
 import pandas as pd
 import os
 
+# Required columns for CSV
 REQUIRED_COLUMNS = {"job_id","title","description","location","company_name","formatted_work_type","normalized_salary",}
 
+# Mapping data keys 
 COLUMN_LABELS = {
     "job_id": "Job ID",
     "title": "Job Title",
@@ -15,17 +17,22 @@ COLUMN_LABELS = {
 
 def load_csv(filepath):
 
+    # Checks if the file is there
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"File not found: {filepath}")
     
+    # Must be a CSV file
     if not filepath.endswith(".csv"):
         raise ValueError("Only .csv files are supported.")
 
+    # Load the data
     df = pd.read_csv(filepath)
 
+    # Checks if the file contains data
     if df.empty:
         raise ValueError("No data found.")
     
+    # Required columns that are missing
     missing_columns = []
     for column in REQUIRED_COLUMNS:
         if column not in df.columns:

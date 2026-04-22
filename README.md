@@ -8,7 +8,8 @@ This README file was created with AI assistance to provide a simple reference wh
 - Core logic:
   - Data cleaning and validation
   - Skill frequency analyzer
-  - Jobs by location and industry
+  - Jobs by Skills
+  - Jobs by Work Type
 - User Interface
 - Testing / Validation
 - Documentation

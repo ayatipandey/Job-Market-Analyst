@@ -10,20 +10,30 @@ class JobMarketAnalyzerApp:
     def __init__(self,root):
         self.root = root
         self.root.title("Job Market Analyzer")
-        self.root.geometry("1000x1000")
+        self.root.geometry("1100x900")
         self.root.configure(bg = "white")
         self.df = None
 
-        self.label = tk.Label(root, text="Job Market Analysis Tool", font =("Arial", 20, "bold"), bg = "white", fg = "black")
-        self.label.pack(pady=20)
+        # Header 
+        self.header = tk.Frame (root, bg = "#003366", height = 120)
+        self.header.pack(fill = "x", side = "top")
+        self.headerLabel = tk.Label(self.header, text="Job Market Analysis Tool", font =("Arial", 25), bg = "#003366", fg = "white")
+        self.headerLabel.pack(pady=20)
 
-        buttonsStyle = {"bg": "#0056b3", "fg": "black", "font":("Arial", 10, "bold"), "width": 25, "pady": 10}
+        # Control Panel
+        self.controlFrame = tk.Frame (root, bg = "white", relief = "groove", bd = 1)
+        self.controlFrame.pack(fill = "x", padx = 40, pady = 20)
+
+        # Button style
+        buttonsStyle = {"bg": "#003366", "fg": "white", "font":("Arial", 10, "bold"), "width": 25, "pady": 10}
         self.uploadButton = tk.Button(root, text = "Upload CSV", command = self.loadFile, **buttonsStyle)
         self.uploadButton.pack(pady=10)
 
+        # File Status
         self.statusLabel = tk.Label(root, text = "No data loaded", bg = "white", fg = "red")
         self.statusLabel.pack()
 
+        # Button grid
         self.buttonFrame = tk.Frame(root, bg = "white")
         self.buttonFrame.pack(pady=20)
 
@@ -39,10 +49,19 @@ class JobMarketAnalyzerApp:
         self.skillsButton = tk.Button(self.buttonFrame, text="Skills Frequency", state="disabled", command=self.showSkills,  **buttonsStyle)
         self.skillsButton.grid(row = 1, column = 1, padx = 10)
 
-        self.chartFrame = tk.Frame(root, bg = "white")
-        self.chartFrame.pack(fill = "both", expand = True, pady = 20, padx = 20 )
+        # Main Content
+        self.contentArea = tk.Frame (root, bg = "white")
+        self.contentArea.pack(fill = "both",expand = True, padx = 40, pady = 10)
+        self.chartFrame = tk.Frame(self.contentArea, bg = "white")
+        self.chartFrame.pack(anchor = "center")
 
-
+        # Footer
+        self.footer = tk.Frame(root, bg = "#003366", height = 50 )
+        self.footer.pack(fill = "x", side = "bottom")
+        self.footerLabel = tk.Label(self.footer, text = "Job Market Analyzer | Introduction to Python Project by Ayati Pandey & Victoria Torres", font =("Arial", 12), bg = "#003366", fg = "white")
+        self.footerLabel.pack(side = "right", padx = 20)
+    
+    # Loads CSV file
     def loadFile(self):
         filePath = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
         if filePath:
@@ -59,6 +78,7 @@ class JobMarketAnalyzerApp:
             except Exception as e:
                 messagebox.showerror("Error:", str(e))
 
+    # Graphs 
     def embedFigures (self,fig):
         for widget in self.chartFrame.winfo_children():
             widget.destroy()
