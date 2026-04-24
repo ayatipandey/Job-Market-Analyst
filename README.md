@@ -6,21 +6,18 @@ This README file was created with AI assistance to provide a simple reference wh
 
 ### Ayati
 - Core logic:
+  - CSV File uplaod
   - Data cleaning and validation
-  - Skill frequency analyzer
-  - Jobs by Skills
-  - Jobs by Work Type
 - User Interface
 - Testing / Validation
 - Documentation
 
 ### Victoria
 - Core logic:
-  - CSV file upload
-  - Data cleaning
+  - Jobs by Skills chart
+  - Jobs by Work Type chart
   - Salary distribution chart
-  - Summary statistics
-- User Interface
+  - Summary statistics table
 - Testing / Validation
 - Documentation
 
@@ -45,7 +42,7 @@ Calculates and displays:
 - Maximum salary
 
 ### Jobs by Location & Work Type
-Displays job counts grouped by location and work type.
+Displays job counts grouped by work type.
 
 ### Summary Statistics
 Shows key figures in a structured table inside the GUI.
