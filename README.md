@@ -15,17 +15,27 @@ python3 main.py
 
 ### Ayati
 - Core logic:
+  - CSV File uplaod
   - Data cleaning and validation
+<<<<<<< HEAD
   - CSV File Upload
 - GUI / User Interface
+=======
+- User Interface
+>>>>>>> 5f347a7feb4253f2f69ccc9c0750eec03a8b7a33
 - Testing / Validation
 - Documentation
 
 ### Victoria
 - Core logic:
+<<<<<<< HEAD
   - Skill frequency analyzer
   - Jobs by Skills graph
   - Jobs by Work Type graph
+=======
+  - Jobs by Skills chart
+  - Jobs by Work Type chart
+>>>>>>> 5f347a7feb4253f2f69ccc9c0750eec03a8b7a33
   - Salary distribution chart
   - Summary statistics table
 - Testing / Validation
@@ -52,7 +62,7 @@ Calculates and displays:
 - Maximum salary
 
 ### Jobs by Location & Work Type
-Displays job counts grouped by location and work type.
+Displays job counts grouped by work type.
 
 ### Summary Statistics
 Shows key figures in a structured table inside the GUI.
