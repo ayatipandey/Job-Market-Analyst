@@ -29,7 +29,6 @@ def salaryDistributionHistogram(df, salary_column='normalized_salary'):
 
 #table of salary summary stats
 def summaryStatsTable(df, salary_column='normalized_salary'):
-    from analyzeData import computeSummaryStatistics #import computeSummaryStatistics from analyzeData.py
     
     summaryStats = computeSummaryStatistics(df, salary_column)
     
@@ -83,16 +82,4 @@ def jobByWorkTypeBarChart(df, workTypeCol='formatted_work_type'):
 #import data and clean data before creating graphs
 from loadData import load_csv
 from cleanData import clean_data
-from analyzeData import skillFrequency, jobsByWorkType
-
-#can be removed once done testing 
-# if __name__ == "__main__":
-#     filepath = "postings.csv"
-#     raw = load_csv(filepath)
-#     df = clean_data(raw)
-
-#     fig1 = skillFrequencyBarChart(df)
-#     plt.show()
-
-#     fig2 = jobByWorkTypeBarChart(df)
-#     plt.show()
+from analyzeData import skillFrequency, jobsByWorkType, computeSummaryStatistics

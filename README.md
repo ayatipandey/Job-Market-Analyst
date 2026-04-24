@@ -4,23 +4,30 @@
 
 This README file was created with AI assistance to provide a simple reference while coding this project. The content and information was sourced from our original project proposal (planned features, team responsibilities, and file structure). AI was used only to organize and format the information clearly.
 
+## How to Run the Program
+### Option 1: Run Button
+While on `main.py`, click the **Run** button located in the top right corner.
+
+### Option 2: Command Terminal
+Open the terminal in the project folder and run:
+
+python3 main.py
+
 ### Ayati
 - Core logic:
   - Data cleaning and validation
-  - Skill frequency analyzer
-  - Jobs by Skills
-  - Jobs by Work Type
-- User Interface
+  - CSV File Upload
+- GUI / User Interface
 - Testing / Validation
 - Documentation
 
 ### Victoria
 - Core logic:
-  - CSV file upload
-  - Data cleaning
+  - Skill frequency analyzer
+  - Jobs by Skills graph
+  - Jobs by Work Type graph
   - Salary distribution chart
-  - Summary statistics
-- User Interface
+  - Summary statistics table
 - Testing / Validation
 - Documentation
 
@@ -61,3 +68,4 @@ cleanData.py    # Cleans and validates data
 analyzeData.py  # Calculates stats and frequencies
 graphs.py       # Builds charts, graphs, and tables
 README.md       # Project documentation
+
