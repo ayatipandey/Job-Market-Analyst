@@ -11,31 +11,20 @@ While on `main.py`, click the **Run** button located in the top right corner.
 ### Option 2: Command Terminal
 Open the terminal in the project folder and run:
 
-python3 main.py
+python3 main.py or python main.py
 
 ### Ayati
 - Core logic:
   - CSV File uplaod
   - Data cleaning and validation
-<<<<<<< HEAD
-  - CSV File Upload
 - GUI / User Interface
-=======
-- User Interface
->>>>>>> 5f347a7feb4253f2f69ccc9c0750eec03a8b7a33
 - Testing / Validation
 - Documentation
 
 ### Victoria
 - Core logic:
-<<<<<<< HEAD
-  - Skill frequency analyzer
   - Jobs by Skills graph
   - Jobs by Work Type graph
-=======
-  - Jobs by Skills chart
-  - Jobs by Work Type chart
->>>>>>> 5f347a7feb4253f2f69ccc9c0750eec03a8b7a33
   - Salary distribution chart
   - Summary statistics table
 - Testing / Validation
